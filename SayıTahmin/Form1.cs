@@ -19,7 +19,21 @@ namespace SayıTahmin
         int sayi = 0, tahmin_sayisi = 0, puan = 1000;
         private void Form1_Load(object sender, EventArgs e)
         {
+            //başlangıçta textbox kapalı olsun. button 2 eventinde açılsın.
+            textBox1.Enabled = false;
             button1.Enabled = false;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        //textBoxa harf yazdırmayı engelle
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -61,6 +75,7 @@ namespace SayıTahmin
 
         private void button2_Click(object sender, EventArgs e)
         {
+            textBox1.Enabled = true;
             button1.Enabled = true;
             button2.Enabled = false;
             Random r=new Random();
